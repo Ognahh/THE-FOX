@@ -1,0 +1,935 @@
+/* =========================
+   BASE
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #11110f;
+    color: #fff;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --gold: #c99b52;
+    --gold-light: #e0b66e;
+    --dark: #11110f;
+    --muted: #999;
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+.navbar {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    background: rgba(17, 17, 15, 0.97);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--gold);
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.menu a {
+    position: relative;
+    color: #eee;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color .3s;
+}
+
+.menu a:hover,
+.menu a.active {
+    color: var(--gold);
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width .3s;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+    width: 100%;
+}
+
+.reservation {
+    color: var(--dark);
+    background: var(--gold);
+    padding: 12px 22px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s;
+    white-space: nowrap;
+}
+
+.reservation:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+main {
+    padding-top: 80px;
+}
+
+.showcase-hero {
+    min-height: 680px;
+    min-height: min(850px, calc(100svh - 80px));
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 25px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 40%,
+            rgba(201,155,82,.17),
+            transparent 55%
+        ),
+        linear-gradient(135deg, #171510, #0b0b0a 70%);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        repeating-linear-gradient(
+            115deg,
+            transparent 0,
+            transparent 100px,
+            rgba(201,155,82,.018) 101px,
+            transparent 102px
+        );
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: appear 1s ease both;
+}
+
+.eyebrow,
+.section-label {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+.eyebrow {
+    margin-bottom: 30px;
+}
+
+.hero-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(60px, 10vw, 125px);
+    line-height: .98;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+
+.hero-content h1 span,
+.section-heading h2 span,
+.concept-section h2 span,
+.booking-section h2 span {
+    color: var(--gold);
+}
+
+.hero-description {
+    max-width: 540px;
+    margin: 0 auto;
+    color: #bdbdbd;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.hero-tags span {
+    padding: 9px 13px;
+    border: 1px solid rgba(201,155,82,.3);
+    color: #ddd;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.gold-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 15px 24px;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transition: .3s;
+}
+
+.gold-button:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+    transform: translateY(-3px);
+}
+
+.hero-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 6%;
+    right: 6%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #777;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   CONCEPT
+   ========================= */
+
+.concept-section {
+    padding: 110px 6% 100px;
+    text-align: center;
+}
+
+.concept-section h2,
+.section-heading h2,
+.booking-section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 5vw, 55px);
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.concept-text {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+.universe-grid {
+    max-width: 1100px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.universe-card {
+    min-height: 330px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    text-align: left;
+    padding: 35px;
+    border: 1px solid rgba(201,155,82,.2);
+    background: #171612;
+    transition: border-color .3s, transform .3s;
+}
+
+.universe-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.jazz-card {
+    background:
+        radial-gradient(ellipse at 75% 15%,
+            rgba(201,155,82,.17), transparent 60%),
+        linear-gradient(145deg, #252017, #11110f);
+}
+
+.club-card {
+    background:
+        radial-gradient(ellipse at 75% 15%,
+            rgba(111,62,117,.22), transparent 60%),
+        linear-gradient(145deg, #211821, #11110f);
+}
+
+.universe-content {
+    position: relative;
+}
+
+.universe-number,
+.universe-hours {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.universe-content h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+.universe-content p {
+    max-width: 350px;
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   PROGRAMME
+   ========================= */
+
+.program-section {
+    padding: 100px 6%;
+    background: #0d0d0b;
+    border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.section-heading > p:last-child {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.week-heading {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 1250px;
+    margin: 0 auto 35px;
+}
+
+.week-heading > div > span {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.week-heading h3 {
+    margin-top: 10px;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+}
+
+.week-heading h3 span {
+    color: #888;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.week-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(201,155,82,.3);
+}
+
+.second-week {
+    margin-top: 100px;
+}
+
+.event-grid {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+
+/* =========================
+   CARTES ÉVÉNEMENTS
+   ========================= */
+
+.event-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #141411;
+    border: 1px solid rgba(255,255,255,.08);
+    transition: transform .3s, border-color .3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(201,155,82,.6);
+}
+
+.event-visual {
+    min-height: 245px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 15px;
+    background: #201e18;
+}
+
+.event-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(201,155,82,.2),
+            transparent 65%
+        );
+    transition: transform .5s;
+}
+
+.event-card:hover .event-visual::before {
+    transform: scale(1.2);
+}
+
+.event-category {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    color: var(--gold);
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.event-day {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    color: #ddd;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.visual-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(32px, 4vw, 49px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+
+.jazz-visual {
+    background: linear-gradient(140deg, #342b1c, #15130f);
+}
+
+.gold-visual {
+    background: linear-gradient(140deg, #594326, #19140d);
+}
+
+.piano-visual {
+    background: linear-gradient(140deg, #272b2b, #11110f);
+}
+
+.masquerade-visual {
+    background: linear-gradient(140deg, #493624, #17110d);
+}
+
+.hamza-visual {
+    background: linear-gradient(140deg, #3c242d, #151012);
+}
+
+.drake-visual {
+    background: linear-gradient(140deg, #48311d, #16120e);
+}
+
+.travis-visual {
+    background: linear-gradient(140deg, #492b20, #17100d);
+}
+
+.ninho-visual {
+    background: linear-gradient(140deg, #332a21, #13110f);
+}
+
+.sunday-visual {
+    background: linear-gradient(140deg, #252438, #11110f);
+}
+
+.event-info {
+    padding: 25px 22px;
+}
+
+.event-date {
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.event-info h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    margin: 12px 0;
+}
+
+.event-info > p:not(.event-date) {
+    min-height: 66px;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.event-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 23px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.event-footer span {
+    color: #777;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.event-footer a {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.event-footer a:hover {
+    color: var(--gold-light);
+}
+
+.club-featured {
+    border-color: rgba(201,155,82,.25);
+}
+
+.program-note {
+    max-width: 900px;
+    margin: 45px auto 0;
+    color: #777;
+    font-size: 10px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+
+/* =========================
+   RÉSERVATION
+   ========================= */
+
+.booking-section {
+    padding: 110px 25px;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(201,155,82,.1),
+            transparent 65%
+        ),
+        #11110f;
+}
+
+.booking-section > p:not(.section-label) {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: #0b0b0a;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.footer-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--gold);
+}
+
+footer > p {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    color: #888;
+    font-size: 11px;
+}
+
+.copyright {
+    margin-top: 40px;
+    color: #555;
+    font-size: 10px;
+}
+
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* =========================
+   TABLETTES
+   ========================= */
+
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .reservation {
+        padding: 10px 14px;
+        font-size: 11px;
+    }
+
+    .event-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .event-visual {
+        min-height: 230px;
+    }
+}
+
+
+/* =========================
+   MOBILES
+   ========================= */
+
+@media (max-width: 800px) {
+    .navbar {
+        min-height: 75px;
+        height: auto;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .logo span {
+        font-size: 13px;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 22px;
+        padding-top: 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu a {
+        flex-shrink: 0;
+        font-size: 11px;
+    }
+
+    .reservation {
+        padding: 10px 14px;
+    }
+
+    main {
+        padding-top: 125px;
+    }
+
+    .showcase-hero {
+        min-height: 650px;
+        min-height: calc(100svh - 125px);
+        padding: 75px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(52px, 12vw, 85px);
+        letter-spacing: 2px;
+    }
+
+    .eyebrow,
+    .section-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .hero-bottom {
+        left: 20px;
+        right: 20px;
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .concept-section {
+        padding: 75px 20px;
+    }
+
+    .universe-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 40px;
+    }
+
+    .universe-card {
+        min-height: 280px;
+        padding: 25px;
+    }
+
+    .program-section {
+        padding: 75px 20px;
+    }
+
+    .section-heading {
+        margin-bottom: 55px;
+    }
+
+    .week-heading {
+        gap: 15px;
+    }
+
+    .week-heading h3 {
+        font-size: 22px;
+    }
+
+    .week-heading h3 span {
+        display: block;
+        margin-top: 6px;
+    }
+
+    .event-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .event-visual {
+        min-height: 190px;
+        padding: 20px 10px;
+    }
+
+    .visual-title {
+        font-size: clamp(25px, 5vw, 38px);
+    }
+
+    .event-category {
+        left: 10px;
+        top: 12px;
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .event-day {
+        top: 12px;
+        right: 10px;
+        font-size: 8px;
+    }
+
+    .event-info {
+        padding: 18px 14px;
+    }
+
+    .event-info h4 {
+        font-size: 19px;
+    }
+
+    .event-info > p:not(.event-date) {
+        font-size: 10px;
+        min-height: 90px;
+    }
+
+    .event-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .booking-section {
+        padding: 80px 20px;
+    }
+}
+
+
+/* =========================
+   PETITS ÉCRANS
+   ========================= */
+
+@media (max-width: 480px) {
+    .hero-tags {
+        gap: 7px;
+    }
+
+    .hero-tags span {
+        font-size: 8px;
+        padding: 8px;
+        letter-spacing: 1px;
+    }
+
+    .hero-bottom span:last-child {
+        display: none;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-visual {
+        min-height: 235px;
+    }
+
+    .visual-title {
+        font-size: 45px;
+    }
+
+    .event-info > p:not(.event-date) {
+        min-height: auto;
+    }
+
+    .event-footer {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .week-heading h3 {
+        font-size: 20px;
+    }
+
+    .week-line {
+        min-width: 15px;
+    }
+}
